@@ -13,6 +13,8 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
+    
+
     @livewireStyles
 </head>
 
@@ -83,6 +85,8 @@
         }
     });
 </script>
+
+<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
 @livewireScripts
 

@@ -71,21 +71,27 @@
         </div>
 
         <section>
-            <div class="pt-20 w-full mx-auto px-8 xl:px-40 xl:mt-10">
-                <div class="relative">
-                    <input type="text" wire:model="pencarian" class="py-2 w-full block mx-auto rounded-md bg-[#03506F] focus:ring focus:ring-violet-300 text-white font-semibold pl-12">
+            <div class="pt-20 w-full mx-auto px-8 xl:px-40 xl:mt-10 flex justify-center gap-5">
+                
+                <div class="relative w-full ">
+                    <input type="text" wire:model="pencarianProperties" class="py-2 w-full block mx-auto rounded-md bg-[#03506F] focus:ring focus:ring-violet-300 text-white font-semibold pl-12">
                     <img src="{{ asset('img/search.png') }}" alt="" class="absolute top-1/2 -translate-y-1/2 left-3 w-[8%] xl:w-[2%]">
                 </div>
+                <button wire:click="sistemPencarian" class="bg-blue-500 text-white font-semibold rounded-sm hover:bg-blue-600 px-4 py-2">
+                    Cari
+                </button>
             </div>  
         </section>
 
         <section class="">
-                
-            @if ($pencarianKosong == 'errors')
-                    <p class="text-white font-semibold text-lg text-center mt-10">Silahkan Masukkan Keywords</p>
-            @elseif($pencarianKosong == 'errors_kosong')
-                    <p class="text-white font-semibold text-lg text-center mt-10">Maaf, Film Tidak Ditemukan</p>
+            
+            @if ($pencarian == null)
+                <p class="text-white font-semibold text-lg text-center mt-10">{{ $pencarian }}</p>
+
+                @elseif($pencarianMovies == null)
+                    <p class="text-white font-semibold text-lg text-center mt-10">Maaf Film Tidak Ditemukan</p>
                 @else
+
                 {{-- ukuran hp --}}
                 <div class="pt-3 px-5 flex flex-wrap justify-between xl:hidden">
                     @foreach ($pencarianMovies as $pencarianMovie) 
@@ -94,11 +100,11 @@
                                 class="border-2 shadow-2xl rounded-xl border-[#2E0249] mb-3 brightness-75 overflow-hidden w-[100%]">
                             <div class="text-white font-semibold px-2">
                                 <a class="text-white font-bold text-lg hover:brightness-75" href="/movie/details/{{ $pencarianMovie['id'] }}">{{ $pencarianMovie['title'] }}</a>
-                                <div class="flex items-center gap-2 py-2 text-[11px]">
+                                {{-- <div class="flex items-center gap-2 py-2 text-[11px]">
                                     <img src="../img/bintang.png" alt="" class="w-[10%]">
                                     <p class="text-white font-semibold ">{{ $pencarianMovie['vote_average'] * 10 . '%' }} | {{ \Carbon\Carbon::parse($pencarianMovie['release_date'])->format('M d, Y') }}</p>
-                                </div>
-                                <p class="text-white font-semibold text-[12px]">
+                                </div> --}}
+                                <p class="text-slate-300 mt-1 font-semibold text-[12px]">
                                     @foreach ($pencarianMovie['genre_ids'] as $genre)
                                         {{ $genreMovies->get($genre) }} @if (!$loop->last)
                                             , 
@@ -123,10 +129,10 @@
                                     class="border-2 shadow-2xl rounded-xl border-[#2E0249] mb-3 brightness-75 overflow-hidden">
                                 <div class="text-white font-semibold px-2">
                                     <a href="/movie/details/{{ $pencarianMovie['id'] }}" class="text-white font-bold text-lg hover:brightness-75">{{ $pencarianMovie['title'] }}</a>
-                                    <div class="flex items-center gap-1 py-2 text-[11px]">
+                                    {{-- <div class="flex items-center gap-1 py-2 text-[11px]">
                                         <img src="{{ asset('img/bintang.png') }}" alt="" class="w-[10%]">
                                         <p class="text-slate-300 font-semibold ">{{ $pencarianMovie['vote_average'] * 10 . '%' }} | {{ \Carbon\Carbon::parse($pencarianMovie['release_date'])->format('M d, Y') }}</p>
-                                    </div>
+                                    </div> --}}
                                     <p class="text-white font-semibold text-[11px]">
                                         @foreach ($pencarianMovie['genre_ids'] as $genre)
                                             {{ $genreMovies->get($genre) }} @if (!$loop->last)
@@ -148,8 +154,7 @@
                     <div class="swiper-scrollbar" style="background: #1F1D36 !important;"></div>
                 </div>
             @endif
-
-                
+              
             
         </section>
     </div>

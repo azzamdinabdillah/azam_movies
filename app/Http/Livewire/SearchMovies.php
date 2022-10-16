@@ -7,39 +7,30 @@ use Illuminate\Support\Facades\Http;
 
 class SearchMovies extends Component
 {
-    public $pencarian = '';
+    public $pencarian;
     public $pencarianKosong;
     public $searchEmpty;
+
+    public $pencarianProperties;
+    public $isiPencarian;
 
     public function render()
     {
 
-        if ($this->pencarian == null) {
-            $pencarianFilm = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/search/movie?query=' . $this->pencarian)->json();
+        // if ($this->pencarian == null) {
+        //     $pencarianFilm = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/search/movie?query=' . $this->pencarian)->json();
 
-            $this->pencarianKosong = collect($pencarianFilm)->keys()->all()[0];
-        } else {
-            $pencarianFilm = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/search/movie?query=' . $this->pencarian)->json()['results'];
-
-            if (empty($pencarianFilm)) {
-                $this->pencarianKosong = 'errors_kosong';
-            }else {
-                $this->pencarianKosong = collect($pencarianFilm)->keys()->all()[0];
-            }
-
-        }
-
-
-
-
-
-        // if (empty($this->pencarianKosong)) {
-        //     $this->pencarian = '';
+        //     $this->pencarianKosong = collect($pencarianFilm)->keys()->all()[0];
         // } else {
-        //     $this->pencarianKosong[0];
-        // }
+        //     $pencarianFilm = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/search/movie?query=' . $this->pencarian)->json()['results'];
 
-        // dd($this->pencarianKosong);
+        //     if (empty($pencarianFilm)) {
+        //         $this->pencarianKosong = 'errors_kosong';
+        //     }else {
+        //         $this->pencarianKosong = collect($pencarianFilm)->keys()->all()[0];
+        //     }
+
+        // }
 
         $genreMovies = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/genre/movie/list')->json()['genres'];
 
@@ -47,9 +38,20 @@ class SearchMovies extends Component
             return [$genre['id'] => $genre['name']];
         });
 
+        $pencarianFilm = Http::withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/search/movie?query=' . $this->pencarian)->json();
+
+        if (count($pencarianFilm) == 1) {
+            return view('livewire.search-movies');
+        }
+
         return view('livewire.search-movies', [
-            'pencarianMovies' => $pencarianFilm,
+            'pencarianMovies' => $pencarianFilm['results'],
             'genreMovies' => $genreMovie,
         ]);
+    }
+
+    public function sistemPencarian()
+    {
+        $this->pencarian = $this->pencarianProperties;
     }
 }

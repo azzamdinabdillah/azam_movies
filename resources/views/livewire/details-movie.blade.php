@@ -85,13 +85,13 @@
             </div>
         </nav>
     </div>
-    <section class="header-mobile relative xl:hidden">
+    <section class="header-mobile xl:hidden">
         <div class="h-screen bg-cover bg-center xl:bg-top bg-no-repeat w-full"
             style="background-image: url('https://image.tmdb.org/t/p/w500/{{ $data['poster_path'] }}');">
-            <div class="w-full h-[45%] bg-black opacity-60 xl:hidden">
+            <div class="w-full h-[45%] border-none bg-black opacity-60 xl:hidden">
                 
             </div>
-            <div class="w-full xl:h-[100%] h-[55%] bg-black opacity-60 xl:opacity-40 relative xl:absolute bottom-0">
+            <div class="w-full xl:h-[100%] h-[55%] border-none bg-black opacity-60 xl:opacity-40 relative xl:absolute bottom-0">
 
             </div>
 
@@ -131,6 +131,7 @@
                 </div> -->
             </div>
         </div>
+        
     </section>
 
     <section class="header-desktop hidden xl:block">
@@ -138,13 +139,13 @@
             <img src="../img/main-1-crop.jpg" alt="" class="w-full">
         </div> -->
 
-        <div class="h-[50vh] bg-cover bg-center bg-no-repeat w-full brightness-75 shadow-2x"
+        {{-- <div class="h-[50vh] bg-cover bg-center bg-no-repeat w-full brightness-75 shadow-2x"
             style="background-image: url('https://image.tmdb.org/t/p/w500/{{ $data['poster_path'] }}');">
 
-        </div>
-        <div class="w-full bg-[#1F1D36]">
+        </div> --}}
+        <div class="w-full bg-[#1F1D36] grid place-content-center h-[100vh]">
             <div class="flex justify-center gap-10 items-center">
-                <img src="https://image.tmdb.org/t/p/w500/{{ $data['poster_path'] }}" alt="" class="w-[15%] py-10 rounded-lg">
+                <img src="https://image.tmdb.org/t/p/w500/{{ $data['poster_path'] }}" alt="" class="w-[20%] rounded-lg shadow-2xl">
 
                 <div class="w-[40%]">
                     <h1 class="text-white text-5xl font-bold">{{ $data['title'] }}</h1>
