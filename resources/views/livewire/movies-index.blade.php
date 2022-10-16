@@ -102,7 +102,7 @@
                         {{ $popularMovies[14]['overview'] }}</p>
 
                     <div class="mt-5 flex gap-5">
-                        <button  type="button" data-modal-toggle="defaultModal"
+                        <button
                             class="bg-blue-500 text-white px-1 font-semibold rounded-sm hover:bg-blue-600 flex items-center justify-center gap-2">
                             <img src="{{ asset('img/play-3.png') }}" alt="" class="w-[15%]">
                             <p class="text-sm">Play Now</p>
@@ -111,31 +111,7 @@
                             class="bg-transparent shadow-2xl border border-slate-500 text-white px-4 py-2 font-semibold rounded-sm hover:bg-blue-600">Trailer</button>
                     </div>
   
-                    <!-- Main modal -->
-                    <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-                        <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-                            <!-- Modal content -->
-                            <div class="relative bg-[#2D4263] rounded-lg shadow dark:bg-gray-700">
-                                <!-- Modal header -->
-                                <div class="flex justify-between items-start p-4 rounded-t">
-                                    <h3 class="text-xl font-semibold text-white dark:text-white">
-                                        Trailer Preview
-                                    </h3>
-                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
-                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="">
-                                    <iframe class="w-full py-2 px-5 xl:h-[60vh] h-[30vh]" src="https://www.youtube.com/embed/01BPk6M37qs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-
-                                <!-- Modal footer -->
-                                
-                            </div>
-                        </div>
-                    </div>
+                    
   
 
 
