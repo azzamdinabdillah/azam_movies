@@ -8,7 +8,8 @@
     <title>Movie | Home</title>
 
     {{-- <link href="/css/app.css" rel="stylesheet"> --}}
-    @vite('resources/css/app.css')
+    {{-- @vite('resources/css/app.css') --}}
+    <link rel="stylesheet" href="/build/assets/app.3b10f8a9.css">
 
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />

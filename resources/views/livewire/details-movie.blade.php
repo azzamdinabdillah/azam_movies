@@ -144,7 +144,7 @@
 
         </div> --}}
         <div class="w-full bg-[#1F1D36] grid place-content-center h-[100vh]">
-            <div class="flex justify-center gap-10 items-center">
+            <div class="flex justify-center gap-10 items-center pt-20">
                 <img src="https://image.tmdb.org/t/p/w500/{{ $data['poster_path'] }}" alt="" class="w-[20%] rounded-lg shadow-2xl">
 
                 <div class="w-[40%]">
